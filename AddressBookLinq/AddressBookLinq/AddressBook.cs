@@ -10,7 +10,7 @@ namespace AddressBookLinq
     public class AddressBook
     {
         DataTable dataTable = new DataTable();
-        public void AddressBookDataTable()
+        public AddressBook()
         {          
             dataTable.Columns.Add("FirstName", typeof(string));
             dataTable.Columns.Add("LastName", typeof(string));
@@ -20,6 +20,30 @@ namespace AddressBookLinq
             dataTable.Columns.Add("Zip", typeof(int));
             dataTable.Columns.Add("PhoneNumber", typeof(long));
             dataTable.Columns.Add("Email", typeof(string));
+        }
+        public void AddContact()
+        {
+            dataTable.Rows.Add("Rohan", "Tare", "Virar", "Mumbai", "Maharashtra", 401305, 9845798243, "rohan@gmail.com");
+            dataTable.Rows.Add("Kylie", "Jenner", "Vasai", "Mumbai", "Maharashtra", 387235, 9487536343, "kylie@gmail.com");
+            dataTable.Rows.Add("Hades", "Wrath", "Street707", "Miami", "Florida", 387544, 3985748965, "hades@gmail.com");
+            dataTable.Rows.Add("Steve", "Jobbs", "Beverlyhills", "Sanfransico", "Newyork", 598489, 8379345945, "jobbs@gmail.com");
+            dataTable.Rows.Add("Kenny", "Jenner", "Bandra", "Mumbai", "Maharashtra", 736826, 9458944446, "kenny@gmail.com");
+            Console.WriteLine("Contact is Added");
+        }
+        public void DisplayContacts()
+        {
+            foreach (var contact in dataTable.AsEnumerable())
+            {
+                Console.WriteLine("FirstName:" + contact.Field<string>("FirstName"));
+                Console.WriteLine("LastName:" + contact.Field<string>("LastName"));
+                Console.WriteLine("Address:" + contact.Field<string>("Address"));
+                Console.WriteLine("City:" + contact.Field<string>("City"));
+                Console.WriteLine("State:" + contact.Field<string>("State"));
+                Console.WriteLine("ZipCode:" + contact.Field<int>("Zip"));
+                Console.WriteLine("PhoneNumber:" + contact.Field<long>("PhoneNumber"));
+                Console.WriteLine("Email:" + contact.Field<string>("Email"));
+                Console.WriteLine();
+            }
         }
     }
 }
