@@ -42,8 +42,32 @@ namespace AddressBookLinq
                 Console.WriteLine("ZipCode:" + contact.Field<int>("Zip"));
                 Console.WriteLine("PhoneNumber:" + contact.Field<long>("PhoneNumber"));
                 Console.WriteLine("Email:" + contact.Field<string>("Email"));
-                Console.WriteLine();
             }
+        }
+        public string EditContact()
+        {
+            string details = "";
+            AddContact();
+            var contacts = dataTable.AsEnumerable().Where(r => r.Field<string>("FirstName") == "Hades");
+            int count = contacts.Count();
+            if (count > 0)
+            {
+                foreach (var contact in contacts)
+                {
+                    details += contact.Field<string>("FirstName");
+                    contact.SetField("LastName", "Death");
+                    contact.SetField("City", "Noida");
+                    contact.SetField("State", "Delhi");
+                    contact.SetField("Zip", 400002);
+                }
+                Console.WriteLine("Contact is Updated");
+                DisplayContacts();
+            }
+            else
+            {
+                Console.WriteLine("Contact not Found.");
+            }
+            return details;
         }
     }
 }

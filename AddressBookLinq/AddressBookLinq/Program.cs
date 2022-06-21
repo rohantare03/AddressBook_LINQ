@@ -11,6 +11,7 @@
             {
                 Console.WriteLine("1: For Add the Contact");
                 Console.WriteLine("2: For Display Contact");
+                Console.WriteLine("3: For Edit the Contact");
                 Console.WriteLine("0: For Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -23,6 +24,12 @@
                         break;
                     case 2:
                         addressbook.DisplayContacts();
+                        break;
+                    case 3:
+                        addressbook.EditContact();
+                        break;
+                    default:
+                        Console.WriteLine("Enter Valid Input");
                         break;
                 }
             }
