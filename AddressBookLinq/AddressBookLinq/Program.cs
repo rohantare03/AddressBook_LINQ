@@ -15,6 +15,7 @@
                 Console.WriteLine("4: For Delete The Contact");
                 Console.WriteLine("5: For Get Details by using City and State");
                 Console.WriteLine("6: For count contacts by using City");
+                Console.WriteLine("7: For Sort the contact by using First Name");
                 Console.WriteLine("0: For Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -39,6 +40,9 @@
                         break;
                     case 6:
                         addressbook.CountContactByUsingCity();
+                        break;
+                    case 7:
+                        addressbook.SortContactsByFirstName();
                         break;
                     default:
                         Console.WriteLine("Enter Valid Input");
